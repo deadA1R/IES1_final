@@ -1,0 +1,121 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    11/10/2023  12:06:40  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+D:\KELI\C51\BIN\BL51.EXE .\Objects\final_project.obj TO .\Objects\final_project PRINT (.\Listings\final_project.m51) RAM
+>> SIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\final_project.obj (FINAL_PROJECT)
+  D:\KELI\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\final_project (FINAL_PROJECT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     004EH     UNIT         ?PR?MAIN?FINAL_PROJECT
+            CODE    084EH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\final_project (FINAL_PROJECT)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?FINAL_PROJECT
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\final_project (FINAL_PROJECT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        FINAL_PROJECT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0800H         PUBLIC        main
+  -------         PROC          MAIN
+  -------         DO            
+  D:0007H         SYMBOL        SW
+  -------         ENDDO         
+  C:0800H         LINE#         3
+  C:0800H         LINE#         5
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  11/10/2023  12:06:40  PAGE 2
+
+
+  C:0802H         LINE#         6
+  C:082AH         LINE#         7
+  C:082AH         LINE#         8
+  C:082AH         LINE#         9
+  C:082DH         LINE#         10
+  C:082EH         LINE#         11
+  C:082EH         LINE#         12
+  C:082EH         LINE#         13
+  C:082EH         LINE#         14
+  C:0831H         LINE#         15
+  C:0832H         LINE#         16
+  C:0832H         LINE#         17
+  C:0832H         LINE#         18
+  C:0832H         LINE#         19
+  C:0835H         LINE#         20
+  C:0836H         LINE#         21
+  C:0836H         LINE#         22
+  C:0836H         LINE#         23
+  C:0836H         LINE#         24
+  C:0839H         LINE#         25
+  C:083AH         LINE#         26
+  C:083AH         LINE#         27
+  C:083AH         LINE#         28
+  C:083AH         LINE#         29
+  C:083DH         LINE#         30
+  C:083EH         LINE#         31
+  C:083EH         LINE#         32
+  C:083EH         LINE#         33
+  C:083EH         LINE#         34
+  C:0841H         LINE#         35
+  C:0842H         LINE#         36
+  C:0842H         LINE#         37
+  C:0842H         LINE#         38
+  C:0842H         LINE#         39
+  C:0845H         LINE#         40
+  C:0846H         LINE#         41
+  C:0846H         LINE#         42
+  C:0846H         LINE#         43
+  C:0846H         LINE#         44
+  C:0849H         LINE#         45
+  C:084AH         LINE#         46
+  C:084AH         LINE#         47
+  C:084AH         LINE#         48
+  C:084AH         LINE#         49
+  C:084DH         LINE#         50
+  C:084DH         LINE#         51
+  C:084DH         LINE#         53
+  C:084DH         LINE#         55
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        FINAL_PROJECT
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 004EH BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=93
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
