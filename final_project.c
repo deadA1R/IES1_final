@@ -6,25 +6,25 @@ void main (void){
 	switch(SW){
 		case(0):
 		{
-			P0 = 0x03;
+			P0 = 0xC0;
 			P2 = 0x00;
 			break;
 		}
 		case(1):
 		{
-			P0 = 0x9F;
+			P0 = 0xF9;
 			P2 = 0x01;
 			break;
 		}
 		case(2):
 		{
-			P0 = 0x25;
+			P0 = 0xA4;
 			P2 = 0x02;
 			break;
 		}
 		case(3):
 		{
-			P0 = 0x0D;
+			P0 = 0xB0;
 			P2 = 0x04;
 			break;
 		}
@@ -36,25 +36,25 @@ void main (void){
 		}
 		case(5):
 		{
-			P0 = 0x49;
+			P0 = 0x92;
 			P2 = 0x10;
 			break;
 		}
 		case(6):
 		{
-			P0 = 0x41;
+			P0 = 0x82;
 			P2 = 0x20;
 			break;
 		}
 		case(7):
 		{
-			P0 = 0x1F;
+			P0 = 0xF8;
 			P2 = 0x40;
 			break;
 		}
 		case(8):
 		{
-			P0 = 0x01;
+			P0 = 0x80;
 			P2 = 0x80;
 			break;
 		}
