@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    11/12/2023  02:58:09  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    11/12/2023  12:40:17  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
@@ -23,17 +23,17 @@ LINK MAP OF MODULE:  .\Objects\final_project (FINAL_PROJECT)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     000CH     UNIT         ?DT?FINAL_PROJECT
-            IDATA   0014H     0001H     UNIT         ?STACK
+            DATA    0008H     000DH     UNIT         ?DT?FINAL_PROJECT
+            IDATA   0015H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     07FDH                  *** GAP ***
             CODE    0800H     008CH     UNIT         ?C_C51STARTUP
-            CODE    088CH     0073H     UNIT         ?PR?MAIN?FINAL_PROJECT
-            CODE    08FFH     0022H     UNIT         ?PR?CHECKCALLBUTTONS?FINAL_PROJECT
-            CODE    0921H     0018H     UNIT         ?PR?MOVEELEVATOR?FINAL_PROJECT
-            CODE    0939H     0012H     UNIT         ?C_INITSEG
+            CODE    088CH     0031H     UNIT         ?PR?MAIN?FINAL_PROJECT
+            CODE    08BDH     0023H     UNIT         ?PR?_CHECKBUTTONS?FINAL_PROJECT
+            CODE    08E0H     0018H     UNIT         ?PR?MOVEELEVATOR?FINAL_PROJECT
+            CODE    08F8H     0015H     UNIT         ?C_INITSEG
 
 
 
@@ -48,7 +48,7 @@ SEGMENT
   +--> ?C_INITSEG
 
 ?PR?MAIN?FINAL_PROJECT
-  +--> ?PR?CHECKCALLBUTTONS?FINAL_PROJECT
+  +--> ?PR?_CHECKBUTTONS?FINAL_PROJECT
   +--> ?PR?MOVEELEVATOR?FINAL_PROJECT
 
 
@@ -59,110 +59,68 @@ SYMBOL TABLE OF MODULE:  .\Objects\final_project (FINAL_PROJECT)
   ----------------------------------
 
   -------         MODULE        FINAL_PROJECT
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  11/12/2023  02:58:09  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  11/12/2023  12:40:17  PAGE 2
 
 
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
-  C:0921H         PUBLIC        moveElevator
+  C:08E0H         PUBLIC        moveElevator
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   D:0008H         PUBLIC        targetFloor
-  D:0009H         PUBLIC        callButtons
+  D:0009H         PUBLIC        buttonsInElevator
   D:000AH         PUBLIC        floor
   C:088CH         PUBLIC        main
-  D:000BH         PUBLIC        displayValues
-  C:08FFH         PUBLIC        checkCallButtons
+  D:000BH         PUBLIC        buttonsOnFloors
+  D:000CH         PUBLIC        displayValues
+  C:08BDH         PUBLIC        _checkButtons
   -------         PROC          MOVEELEVATOR
-  C:0921H         LINE#         10
-  C:0921H         LINE#         11
-  C:0928H         LINE#         12
-  C:092AH         LINE#         13
-  C:0933H         LINE#         14
-  C:0935H         LINE#         15
-  C:0935H         LINE#         16
-  C:0938H         LINE#         17
+  C:08E0H         LINE#         16
+  C:08E0H         LINE#         17
+  C:08E7H         LINE#         18
+  C:08E9H         LINE#         19
+  C:08F2H         LINE#         20
+  C:08F4H         LINE#         21
+  C:08F4H         LINE#         22
+  C:08F7H         LINE#         23
   -------         ENDPROC       MOVEELEVATOR
-  -------         PROC          CHECKCALLBUTTONS
+  -------         PROC          _CHECKBUTTONS
+  D:0005H         SYMBOL        button
   -------         DO            
-  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        i
   -------         ENDDO         
-  C:08FFH         LINE#         19
-  C:08FFH         LINE#         21
-  C:0901H         LINE#         22
-  C:0919H         LINE#         23
-  C:091BH         LINE#         24
-  C:091CH         LINE#         25
-  C:091CH         LINE#         26
-  C:0920H         LINE#         27
-  -------         ENDPROC       CHECKCALLBUTTONS
+  C:08BDH         LINE#         26
+  C:08BFH         LINE#         28
+  C:08C1H         LINE#         29
+  C:08D8H         LINE#         30
+  C:08DAH         LINE#         31
+  C:08DBH         LINE#         32
+  C:08DBH         LINE#         33
+  C:08DFH         LINE#         34
+  -------         ENDPROC       _CHECKBUTTONS
   -------         PROC          MAIN
-  -------         DO            
-  D:0004H         SYMBOL        SW
-  -------         ENDDO         
-  C:088CH         LINE#         29
-  C:088CH         LINE#         31
-  C:088CH         LINE#         32
-  C:088EH         LINE#         33
-  C:0891H         LINE#         34
-  C:0897H         LINE#         35
-  C:089AH         LINE#         36
-  C:08BDH         LINE#         37
-  C:08BDH         LINE#         38
-  C:08BDH         LINE#         39
-  C:08C0H         LINE#         40
-  C:08C2H         LINE#         41
-  C:08C2H         LINE#         42
-  C:08C2H         LINE#         43
-  C:08C2H         LINE#         44
-  C:08C5H         LINE#         45
-  C:08C7H         LINE#         46
-  C:08C7H         LINE#         47
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  11/12/2023  02:58:09  PAGE 3
-
-
-  C:08C7H         LINE#         48
-  C:08C7H         LINE#         49
-  C:08CAH         LINE#         50
-  C:08CCH         LINE#         51
-  C:08CCH         LINE#         52
-  C:08CCH         LINE#         53
-  C:08CCH         LINE#         54
-  C:08CFH         LINE#         55
-  C:08D1H         LINE#         56
-  C:08D1H         LINE#         57
-  C:08D1H         LINE#         58
-  C:08D1H         LINE#         59
-  C:08D4H         LINE#         60
-  C:08D6H         LINE#         61
-  C:08D6H         LINE#         62
-  C:08D6H         LINE#         63
-  C:08D6H         LINE#         64
-  C:08D9H         LINE#         65
-  C:08DBH         LINE#         66
-  C:08DBH         LINE#         67
-  C:08DBH         LINE#         68
-  C:08DBH         LINE#         69
-  C:08DEH         LINE#         70
-  C:08E0H         LINE#         71
-  C:08E0H         LINE#         72
-  C:08E0H         LINE#         73
-  C:08E0H         LINE#         74
-  C:08E3H         LINE#         75
-  C:08E3H         LINE#         76
-  C:08E3H         LINE#         77
-  C:08E3H         LINE#         78
-  C:08E3H         LINE#         79
-  C:08E6H         LINE#         80
-  C:08EEH         LINE#         81
-  C:08FDH         LINE#         82
+  C:088CH         LINE#         37
+  C:088CH         LINE#         38
+  C:088CH         LINE#         39
+  C:088FH         LINE#         40
+  C:0892H         LINE#         41
+  C:0897H         LINE#         42
+  C:089CH         LINE#         43
+  C:08A1H         LINE#         44
+  C:08A1H         LINE#         45
+  C:08A4H         LINE#         46
+  C:08ACH         LINE#         47
+  C:08BBH         LINE#         48
   -------         ENDPROC       MAIN
   -------         ENDMOD        FINAL_PROJECT
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00BEH BYTE ( 9%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0080H BYTE ( 6%) *
 ******************************************************************************
 
-Program Size: data=21.0 xdata=0 code=334
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  11/12/2023  12:40:17  PAGE 3
+
+
+Program Size: data=22.0 xdata=0 code=272
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

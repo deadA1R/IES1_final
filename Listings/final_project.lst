@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   FINAL_PROJECT                                                     11/12/2023 02:58:09 PAGE 1   
+C51 COMPILER V9.60.7.0   FINAL_PROJECT                                                     11/12/2023 12:40:16 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE FINAL_PROJECT
@@ -8,99 +8,68 @@ COMPILER INVOKED BY: D:\Keli\C51\BIN\C51.EXE final_project.c OPTIMIZE(8,SPEED) B
 
 line level    source
 
-   1          #include <reg51.h>
-   2          
-   3          unsigned char floor; 
-   4          unsigned char targetFloor = 0; 
-   5          unsigned char callButtons = 0; 
+   1                              // Final Project 
+   2                              // CS-2117
+   3                              // Dias Amangeldy, Ilya Rogov, Beybarys Rysbek all from CS-2117
+   4          
+   5          #include <reg51.h> // Connecting the library for working with 8051 microcontrollers
    6          
-   7          unsigned char displayValues[] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80};
-   8          
-   9          
-  10          void moveElevator() {
-  11   1          if (floor < targetFloor) {
-  12   2              floor++;
-  13   2          } else if (floor > targetFloor) {
-  14   2              floor--;
-  15   2          }
-  16   1          targetFloor = floor; 
-  17   1      }
-  18          
-  19          void checkCallButtons() {
-  20   1          unsigned char i;
-  21   1          for (i = 0; i < 8; i++) {
-  22   2              if ((callButtons & (1 << i)) != 0) {
-  23   3                  targetFloor = i;
-  24   3                  break;
-  25   3              }
-  26   2          }
-  27   1      }
-  28          
-  29          void main (void) {
-  30   1          unsigned char SW;
-  31   1          while(1) {
-  32   2              SW = P1;
-  33   2              callButtons = P3;
-  34   2              if (floor == targetFloor) {
-  35   3                  checkCallButtons();
-  36   3                  switch(SW) {
-  37   4                      case(1):
-  38   4                      {
-  39   5                          targetFloor = 0;
-  40   5                          break;
-  41   5                      }
-  42   4                      case(2):
-  43   4                      {
-  44   5                          targetFloor = 1;
-  45   5                          break;
-  46   5                      }
-  47   4                      case(4):
-  48   4                      {
-  49   5                          targetFloor = 2;
-  50   5                          break;
-  51   5                      }
-  52   4                      case(8):
-  53   4                      {
-  54   5                          targetFloor = 3;
-C51 COMPILER V9.60.7.0   FINAL_PROJECT                                                     11/12/2023 02:58:09 PAGE 2   
+   7          unsigned char floor; // Variable for storing the current floor
+   8          unsigned char targetFloor = 0; // Variable for storing the target floor
+   9          unsigned char buttonsOnFloors = 0; // Variable for storing the status of call buttons on floors
+  10          unsigned char buttonsInElevator = 0; // Variable for storing the status of call buttons in elevator
+  11          
+  12          // Array, for displaying values from 1 to 8 on a 7-segment display
+  13          unsigned char displayValues[] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80};
+  14          
+  15          // Method for moving between floors
+  16          void moveElevator() {
+  17   1          if (floor < targetFloor) { // If the current floor is lower than the target one, the one we want to ge
+             -t to
+  18   2              floor++; // Moving up one floor
+  19   2          } else if (floor > targetFloor) { // If the current floor is larger than the target one, the one we wa
+             -nt to get to
+  20   2              floor--; // Moving down one floor
+  21   2          }
+  22   1          targetFloor = floor; // We save the current floor as a standard value so that the elevator remains on 
+             -this floor
+  23   1      }
+  24          
+  25          // Method for checking which button was pressed
+  26          void checkButtons(unsigned char button){
+  27   1         unsigned char i; // Variable i for loop
+  28   1          for (i = 0; i < 8; i++) { // Check each button
+  29   2              if ((button & (1 << i)) != 0) { // If the call button is pressed
+  30   3                  targetFloor = i; // Setting the target floor to which the elevator will be moved
+  31   3                  break; // Break the IF operation and exit the method
+  32   3              }
+  33   2          }
+  34   1      }
+  35          
+  36          // The main method, the program starts working here
+  37          void main (void) {
+  38   1          while(1) { // Infinite Loop
+  39   2              buttonsInElevator = P1; // Reading the status of the buttons inside the elevator
+  40   2              buttonsOnFloors = P3; // Reading the status of the call buttons on the floors
+  41   2              if (floor == targetFloor) { // If the elevator is on the target floor
+  42   3                  checkButtons(buttonsInElevator); // Checking the call buttons in the elevator, calling the method
+  43   3                  checkButtons(buttonsOnFloors); // Checking the call buttons on the floors, calling the method
+  44   3              }
+  45   2              moveElevator(); // Moving the elevator
+  46   2              P0 = displayValues[floor + 1];  // Displaying the current floor on a 7-segment display
+  47   2              P2 = 1 << floor; // Lights the corresponding light bulb
+  48   2          }
+  49   1      }
 
-  55   5                          break;
-  56   5                      }
-  57   4                      case(16):
-  58   4                      {
-  59   5                          targetFloor = 4;
-  60   5                          break;
-  61   5                      }
-  62   4                      case(32):
-  63   4                      {
-  64   5                          targetFloor = 5;
-  65   5                          break;
-  66   5                      }
-  67   4                      case(64):
-  68   4                      {
-  69   5                          targetFloor = 6;
-  70   5                          break;
-  71   5                      }
-  72   4                      case(128):
-  73   4                      {
-  74   5                          targetFloor = 7;
-  75   5                          break;
-  76   5                      }
-  77   4                  }
-  78   3              }
-  79   2              moveElevator();
-  80   2              P0 = displayValues[floor + 1];  
-  81   2              P2 = 1 << floor; 
-  82   2          }
-  83   1      }
 
+C51 COMPILER V9.60.7.0   FINAL_PROJECT                                                     11/12/2023 12:40:16 PAGE 2   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    173    ----
+   CODE SIZE        =    108    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     12    ----
+   DATA SIZE        =     13    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
